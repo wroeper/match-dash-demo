@@ -52,7 +52,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "match-demo"
+      "name": "match-dash-demo"
     }
   ],
   "placementConstraints": [],
