@@ -62,7 +62,7 @@
     "EC2",
     "FARGATE"
   ],
-  "family": "wr-match-pre",
+  "family": "wr-match-dash-pre",
   "pidMode": null,
   "requiresCompatibilities": [
     "FARGATE"

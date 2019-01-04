@@ -62,7 +62,7 @@
     "EC2",
     "FARGATE"
   ],
-  "family": "wr-match-int",
+  "family": "wr-match-dash-int",
   "pidMode": null,
   "requiresCompatibilities": [
     "FARGATE"
