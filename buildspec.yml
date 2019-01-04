@@ -17,7 +17,7 @@ phases:
       - echo Pushing docker image...
       - docker push 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION
       - echo Writing image definitions file...
-      - printf '{"ImageURI":"wroeper/match-dash-demo:%s"}' $CODEBUILD_RESOLVED_SOURCE_VERSION > imageDetail.json
+      - printf '{"ImageURI":"732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:%s"}' $CODEBUILD_RESOLVED_SOURCE_VERSION > imageDetail.json
 artifacts:
     files: imageDetail.json
 cache:
