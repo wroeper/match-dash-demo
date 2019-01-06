@@ -1,22 +1,16 @@
 version: 0.2
 
 phases:
-  pre_build:
-    commands:
-      - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --no-include-email --region eu-central-1)  
   build:
     commands:
       - npm install
       - npm run build
-      - echo build docker image...      
-      - docker build . -t match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION
-      - docker tag match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION
   post_build:
     commands:
-      - echo Pushing docker image...
+      - $(aws ecr get-login --no-include-email --region eu-central-1)  
+      - docker build . -t match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - docker tag match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION      
       - docker push 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION
-      - echo Writing image definitions file...
       - printf '{"ImageURI":"732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:%s"}' $CODEBUILD_RESOLVED_SOURCE_VERSION > imageDetail.json
 artifacts:
     files: imageDetail.json
