@@ -3,13 +3,13 @@ version: 0.2
 phases:
   build:
     commands:
-      - npm ci
+      - npm install
       - npm run build
   post_build:
     commands:
-#      - $(aws ecr get-login --no-include-email --region eu-central-1)  
-      - docker pull 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:latest || true    
-      - docker build . -t match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION --cache-from 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:latest
+      - $(aws ecr get-login --no-include-email --region eu-central-1)  
+#      - docker pull 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:latest || true    
+      - docker build . -t match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION ##--cache-from 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:latest
       - docker tag match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION      
       - docker tag match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:latest
       - docker push 732651269425.dkr.ecr.eu-central-1.amazonaws.com/match-dash-demo:$CODEBUILD_RESOLVED_SOURCE_VERSION
