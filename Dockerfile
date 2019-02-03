@@ -1,4 +1,6 @@
 FROM nginx:alpine
+COPY docker-start.sh /
+RUN chmod +x /docker-start.sh
 COPY build /usr/share/nginx/html
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["./docker-start.sh"]

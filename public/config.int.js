@@ -1,0 +1,2 @@
+window.RUNTIME_ENV_NAME = "INTEGRATION";
+window.RUNTIME_ENV_COLOR = "green";

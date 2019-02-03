@@ -1,0 +1,2 @@
+window.RUNTIME_ENV_NAME = "PRE-PRODUCTION";
+window.RUNTIME_ENV_COLOR = "blue";

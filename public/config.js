@@ -1,0 +1,2 @@
+window.RUNTIME_ENV_NAME = "DEVELOPMENT";
+window.RUNTIME_ENV_COLOR = "gray";
